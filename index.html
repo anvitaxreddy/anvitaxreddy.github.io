@@ -1,1036 +1,1032 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Anvita Panjugula | AI Engineer</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary: #6B4E9B;
-            --secondary: #D97638;
-            --accent: #4A8FA0;
-            --mint: #9DCDC0;
-            --dark: #2D2D3F;
-            --light: #F5F5F0;
-        }
-
-        body {
-            font-family: 'Georgia', 'Times New Roman', serif;
-            background: var(--mint);
-            color: var(--dark);
-            overflow-x: hidden;
-        }
-
-        /* Decorative background elements */
-        .bg-decoration {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            top: 0;
-            left: 0;
-            z-index: 0;
-            pointer-events: none;
-            overflow: hidden;
-        }
-
-        .circle {
-            position: absolute;
-            border-radius: 50%;
-            opacity: 0.6;
-            animation: float-circle 20s infinite;
-        }
-
-        @keyframes float-circle {
-            0%, 100% { transform: translate(0, 0) scale(1); }
-            33% { transform: translate(30px, -40px) scale(1.1); }
-            66% { transform: translate(-20px, 20px) scale(0.9); }
-        }
-
-        /* Hero Section */
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            background: linear-gradient(135deg, #8B6FB5 0%, #B07A9E 50%, #D97638 100%);
-            overflow: hidden;
-        }
-
-        .hero-pattern {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            opacity: 0.3;
-        }
-
-        .pattern-dot {
-            position: absolute;
-            width: 4px;
-            height: 4px;
-            background: #2D2D3F;
-            border-radius: 50%;
-        }
-
-        .hero-content {
-            position: relative;
-            z-index: 10;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-
-        .hero h1 {
-            font-size: clamp(3rem, 12vw, 7rem);
-            font-weight: 700;
-            letter-spacing: 0.05em;
-            text-transform: uppercase;
-            margin-bottom: 1rem;
-            text-shadow: 3px 3px 0 rgba(0,0,0,0.2);
-            animation: fadeInDown 1s ease;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(1rem, 3vw, 1.5rem);
-            font-weight: 300;
-            letter-spacing: 0.1em;
-            margin-bottom: 3rem;
-            animation: fadeInUp 1s ease 0.3s both;
-        }
-
-        .scroll-arrow {
-            font-size: 2rem;
-            animation: bounce-arrow 2s infinite;
-            cursor: pointer;
-        }
-
-        @keyframes bounce-arrow {
-            0%, 20%, 50%, 80%, 100% { transform: translateY(0); }
-            40% { transform: translateY(10px); }
-            60% { transform: translateY(5px); }
-        }
-
-        @keyframes fadeInDown {
-            from { opacity: 0; transform: translateY(-30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        @keyframes fadeInUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        /* Navigation */
-        nav {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.95);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 1.5rem 3rem;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            transition: all 0.3s ease;
-        }
-
-        nav .nav-container {
-            max-width: 1400px;
-            margin: 0 auto;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .nav-brand {
-            font-size: 1.5rem;
-            font-weight: 700;
-            color: var(--primary);
-            text-transform: uppercase;
-            letter-spacing: 0.1em;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2.5rem;
-        }
-
-        nav a {
-            color: var(--dark);
-            text-decoration: none;
-            font-weight: 500;
-            font-size: 1rem;
-            transition: color 0.3s ease;
-            position: relative;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--secondary);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after {
-            width: 100%;
-        }
-
-        nav a:hover {
-            color: var(--secondary);
-        }
-
-        /* Content Sections */
-        section {
-            padding: 5rem 2rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .section-container {
-            max-width: 1200px;
-            margin: 0 auto;
-            background: white;
-            padding: 4rem;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
-            border-radius: 0;
-            position: relative;
-        }
-
-        .section-title {
-            font-size: clamp(2.5rem, 6vw, 4rem);
-            font-weight: 700;
-            color: var(--primary);
-            margin-bottom: 3rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -10px;
-            left: 0;
-            width: 60%;
-            height: 4px;
-            background: var(--secondary);
-        }
-
-        /* About Section */
-        .about-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .about-card {
-            padding: 2rem;
-            background: linear-gradient(135deg, #F5F5F0 0%, #E8E8E0 100%);
-            border-left: 5px solid var(--secondary);
-            transition: all 0.3s ease;
-        }
-
-        .about-card:hover {
-            transform: translateX(10px);
-            box-shadow: -10px 10px 0 var(--primary);
-        }
-
-        .about-card h3 {
-            font-size: 1.8rem;
-            color: var(--primary);
-            margin-bottom: 1rem;
-        }
-
-        .about-card p, .about-card div {
-            line-height: 1.8;
-            color: var(--dark);
-        }
-
-        /* Experience Cards */
-        .experience-grid {
-            display: flex;
-            flex-direction: column;
-            gap: 3rem;
-            margin-top: 3rem;
-        }
-
-        .exp-card {
-            padding: 3rem;
-            background: white;
-            border: 3px solid var(--dark);
-            position: relative;
-            transition: all 0.3s ease;
-        }
-
-        .exp-card::before {
-            content: '';
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            right: -10px;
-            bottom: -10px;
-            background: var(--primary);
-            z-index: -1;
-            transition: all 0.3s ease;
-        }
-
-        .exp-card:hover::before {
-            top: 15px;
-            left: 15px;
-        }
-
-        .exp-card h3 {
-            font-size: 2rem;
-            color: var(--primary);
-            margin-bottom: 0.5rem;
-        }
-
-        .exp-company {
-            font-size: 1.3rem;
-            color: var(--secondary);
-            font-weight: 600;
-            margin-bottom: 0.5rem;
-        }
-
-        .exp-date {
-            font-style: italic;
-            color: #666;
-            margin-bottom: 1.5rem;
-        }
-
-        .exp-card ul {
-            list-style: none;
-            padding-left: 0;
-        }
-
-        .exp-card li {
-            padding-left: 2rem;
-            margin: 0.8rem 0;
-            position: relative;
-            line-height: 1.6;
-        }
-
-        .exp-card li::before {
-            content: '▸';
-            position: absolute;
-            left: 0;
-            color: var(--secondary);
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* Projects Grid */
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2.5rem;
-            margin-top: 3rem;
-        }
-
-        .project-card {
-            background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
-            color: white;
-            padding: 2.5rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-        }
-
-        .project-card::before {
-            content: '';
-            position: absolute;
-            top: -50%;
-            right: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
-            transition: all 0.5s ease;
-        }
-
-        .project-card:hover::before {
-            top: -60%;
-            right: -60%;
-        }
-
-        .project-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
-        }
-
-        .project-card h3 {
-            font-size: 1.8rem;
-            margin-bottom: 0.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-subtitle {
-            font-size: 1rem;
-            opacity: 0.9;
-            margin-bottom: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card ul {
-            list-style: none;
-            padding-left: 0;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-card li {
-            margin: 0.8rem 0;
-            padding-left: 1.5rem;
-            position: relative;
-        }
-
-        .project-card li::before {
-            content: '◆';
-            position: absolute;
-            left: 0;
-            opacity: 0.7;
-        }
-
-        .project-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-top: 1.5rem;
-            position: relative;
-            z-index: 1;
-        }
-
-        .project-tag {
-            background: rgba(255,255,255,0.2);
-            padding: 0.4rem 0.8rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid rgba(255,255,255,0.3);
-        }
-
-        /* Skills Section */
-        .skills-container {
-            margin-top: 3rem;
-        }
-
-        .skill-category {
-            margin-bottom: 3rem;
-            padding: 2rem;
-            background: linear-gradient(135deg, #F5F5F0 0%, white 100%);
-            border-left: 5px solid var(--primary);
-        }
-
-        .skill-category:nth-child(even) {
-            border-left-color: var(--secondary);
-        }
-
-        .skill-category:nth-child(3n) {
-            border-left-color: var(--accent);
-        }
-
-        .skill-category h3 {
-            font-size: 1.5rem;
-            color: var(--dark);
-            margin-bottom: 1.5rem;
-            text-transform: uppercase;
-            letter-spacing: 0.05em;
-        }
-
-        .skill-tags {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.8rem;
-        }
-
-        .skill-tag {
-            background: var(--dark);
-            color: white;
-            padding: 0.6rem 1.2rem;
-            font-size: 0.9rem;
-            font-weight: 500;
-            transition: all 0.3s ease;
-            border: 2px solid var(--dark);
-        }
-
-        .skill-tag:hover {
-            background: white;
-            color: var(--dark);
-            transform: translateY(-3px);
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-        }
-
-        /* Contact Section */
-        .contact-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 2rem;
-            margin-top: 3rem;
-        }
-
-        .contact-card {
-            padding: 2rem;
-            background: var(--primary);
-            color: white;
-            text-align: center;
-            transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .contact-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 100%;
-            height: 100%;
-            background: rgba(255,255,255,0.1);
-            transition: left 0.3s ease;
-        }
-
-        .contact-card:hover::before {
-            left: 0;
-        }
-
-        .contact-card:nth-child(2) {
-            background: var(--secondary);
-        }
-
-        .contact-card:nth-child(3) {
-            background: var(--accent);
-        }
-
-        .contact-card:hover {
-            transform: scale(1.05);
-        }
-
-        .contact-icon {
-            font-size: 3rem;
-            margin-bottom: 1rem;
-        }
-
-        .contact-card h3 {
-            font-size: 1.2rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .contact-card a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            nav ul {
-                gap: 1rem;
-                flex-wrap: wrap;
-                justify-content: center;
-            }
-
-            nav {
-                padding: 1rem;
-            }
-
-            .section-container {
-                padding: 2rem;
-            }
-
-            .nav-brand {
-                font-size: 1.2rem;
-            }
-
-            nav .nav-container {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Anvita Panjugula — World</title>
+<link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=Syne:wght@400;700;800&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+
+<script type="importmap">
+{
+  "imports": {
+    "three": "https://unpkg.com/three@0.156.0/build/three.module.js",
+    "three/addons/": "https://unpkg.com/three@0.156.0/examples/jsm/"
+  }
+}
+</script>
+
+<style>
+*,*::before,*::after{margin:0;padding:0;box-sizing:border-box;}
+:root{
+  --ink:#0a0a1a;
+  --plasma:#c084fc;
+  --nova:#f97316;
+  --teal:#2dd4bf;
+  --gold:#fbbf24;
+  --green:#4ade80;
+  --red:#f87171;
+  --white:#f0f0f8;
+}
+html,body{width:100%;height:100%;overflow:hidden;background:var(--ink);}
+body{font-family:'Syne',sans-serif;cursor:none;}
+
+/* ── CANVAS ── */
+#c{position:fixed;inset:0;display:block;}
+
+/* ── CUSTOM CURSOR ── */
+#cur{position:fixed;width:14px;height:14px;border-radius:50%;
+  background:var(--nova);pointer-events:none;z-index:9999;
+  transform:translate(-50%,-50%);mix-blend-mode:screen;
+  box-shadow:0 0 12px var(--nova);transition:transform .1s;}
+#cur-ring{position:fixed;width:36px;height:36px;border-radius:50%;
+  border:1.5px solid rgba(196,132,252,.5);pointer-events:none;z-index:9998;
+  transform:translate(-50%,-50%);
+  transition:width .25s,height .25s,border-color .25s,transform .14s cubic-bezier(.16,1,.3,1);}
+
+/* ── HUD TOP BAR ── */
+#hud-top{
+  position:fixed;top:0;left:0;right:0;z-index:200;
+  display:flex;justify-content:space-between;align-items:center;
+  padding:.9rem 2rem;
+  background:linear-gradient(to bottom,rgba(10,10,26,.95),transparent);
+  pointer-events:none;
+}
+#hud-name{
+  font-family:'Press Start 2P',monospace;
+  font-size:.7rem;color:var(--plasma);
+  text-shadow:0 0 12px var(--plasma);letter-spacing:.05em;
+}
+#hud-coords{
+  font-family:'Space Mono',monospace;font-size:.6rem;
+  color:rgba(255,255,255,.3);letter-spacing:.15em;
+}
+
+/* ── MINIMAP ── */
+#minimap{
+  position:fixed;bottom:1.5rem;right:1.5rem;z-index:200;
+  width:110px;height:110px;
+  border:1px solid rgba(196,132,252,.25);
+  background:rgba(10,10,26,.8);
+  backdrop-filter:blur(10px);
+}
+#minimap canvas{width:100%;height:100%;}
+#minimap-label{
+  position:absolute;bottom:-1.2rem;left:50%;transform:translateX(-50%);
+  font-family:'Space Mono',monospace;font-size:.48rem;
+  color:rgba(255,255,255,.3);letter-spacing:.15em;white-space:nowrap;
+}
+
+/* ── ISLAND LABEL POPUP ── */
+#island-label{
+  position:fixed;bottom:7rem;left:50%;transform:translateX(-50%);
+  z-index:200;pointer-events:none;
+  text-align:center;transition:opacity .4s;opacity:0;
+}
+#island-label .zone-tag{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.3em;color:var(--nova);text-transform:uppercase;
+  margin-bottom:.4rem;
+}
+#island-label .zone-name{
+  font-family:'Press Start 2P',monospace;font-size:.9rem;
+  color:white;text-shadow:0 0 20px rgba(196,132,252,.8);
+  line-height:1.6;
+}
+#island-label .zone-hint{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  color:rgba(255,255,255,.4);margin-top:.5rem;letter-spacing:.1em;
+}
+
+/* ── CONTROLS HINT ── */
+#controls-hint{
+  position:fixed;bottom:1.5rem;left:50%;transform:translateX(-50%);
+  z-index:200;pointer-events:none;
+  display:flex;gap:1.5rem;align-items:center;
+  transition:opacity .5s;
+}
+.ctrl-key{
+  font-family:'Press Start 2P',monospace;font-size:.5rem;
+  color:rgba(255,255,255,.5);
+  display:flex;flex-direction:column;align-items:center;gap:.4rem;
+}
+.key-box{
+  width:30px;height:30px;border:1px solid rgba(255,255,255,.2);
+  background:rgba(255,255,255,.05);
+  display:flex;align-items:center;justify-content:center;
+  font-size:.7rem;color:rgba(255,255,255,.7);
+  font-family:'Space Mono',monospace;
+  transition:background .1s,border-color .1s;
+}
+.key-box.pressed{background:rgba(196,132,252,.3);border-color:var(--plasma);}
+.key-row{display:flex;gap:.3rem;}
+
+/* ── PANEL (info card when you approach an island) ── */
+#panel{
+  position:fixed;top:50%;right:2rem;transform:translateY(-50%);
+  width:320px;z-index:200;
+  background:rgba(10,10,26,.92);
+  border:1px solid rgba(196,132,252,.25);
+  backdrop-filter:blur(20px);
+  padding:1.8rem;
+  transition:opacity .5s,transform .5s;
+  opacity:0;pointer-events:none;
+  max-height:80vh;overflow-y:auto;
+}
+#panel.show{opacity:1;pointer-events:all;}
+#panel::-webkit-scrollbar{width:4px;}
+#panel::-webkit-scrollbar-thumb{background:rgba(196,132,252,.3);}
+#panel-zone{
+  font-family:'Space Mono',monospace;font-size:.55rem;
+  letter-spacing:.3em;color:var(--nova);margin-bottom:.6rem;
+}
+#panel-title{
+  font-family:'Press Start 2P',monospace;font-size:.75rem;
+  color:white;line-height:1.8;margin-bottom:1.2rem;
+}
+#panel-body{
+  font-family:'Syne',sans-serif;font-size:.82rem;
+  color:rgba(240,240,248,.65);line-height:1.9;
+}
+#panel-body strong{color:var(--teal);}
+#panel-body .entry{
+  margin-bottom:1.2rem;padding-bottom:1.2rem;
+  border-bottom:1px solid rgba(255,255,255,.07);
+}
+#panel-body .entry:last-child{border-bottom:none;margin-bottom:0;}
+#panel-body .e-title{
+  font-family:'Space Mono',monospace;font-size:.7rem;
+  color:white;margin-bottom:.2rem;letter-spacing:.05em;
+}
+#panel-body .e-sub{color:var(--plasma);font-size:.75rem;margin-bottom:.6rem;}
+#panel-body .e-date{color:rgba(255,255,255,.3);font-size:.65rem;margin-bottom:.6rem;font-family:'Space Mono',monospace;}
+#panel-body ul{list-style:none;padding-left:0;}
+#panel-body li{padding:.3rem 0 .3rem 1.2rem;position:relative;font-size:.8rem;color:rgba(240,240,248,.55);}
+#panel-body li::before{content:'▸';position:absolute;left:0;color:var(--nova);}
+#panel-body .tag-row{display:flex;flex-wrap:wrap;gap:.4rem;margin-top:.8rem;}
+#panel-body .tag{padding:.2rem .55rem;font-size:.65rem;
+  border:1px solid rgba(255,255,255,.1);color:rgba(255,255,255,.5);}
+#panel-body .live-btn{
+  display:inline-block;margin-top:.8rem;padding:.5rem 1rem;
+  background:rgba(249,115,22,.15);border:1px solid rgba(249,115,22,.4);
+  color:var(--nova);font-family:'Space Mono',monospace;
+  font-size:.6rem;letter-spacing:.15em;text-decoration:none;cursor:pointer;
+}
+#panel-close{
+  position:absolute;top:.8rem;right:.8rem;
+  font-family:'Space Mono',monospace;font-size:.7rem;
+  color:rgba(255,255,255,.3);cursor:pointer;padding:.3rem .5rem;
+  transition:color .2s;
+}
+#panel-close:hover{color:var(--nova);}
+
+/* ── ENTER PROMPT ── */
+#enter-prompt{
+  position:fixed;bottom:4rem;left:50%;transform:translateX(-50%);
+  z-index:200;pointer-events:none;
+  font-family:'Press Start 2P',monospace;font-size:.55rem;
+  color:var(--gold);letter-spacing:.1em;
+  text-shadow:0 0 12px var(--gold);
+  animation:blink-prompt 1.2s infinite;opacity:0;
+  transition:opacity .3s;
+}
+@keyframes blink-prompt{0%,100%{opacity:1}50%{opacity:.3}}
+
+/* ── INTRO SCREEN ── */
+#intro{
+  position:fixed;inset:0;z-index:9000;
+  background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;
+  text-align:center;
+  transition:opacity 1s;
+}
+#intro.fade{opacity:0;pointer-events:none;}
+.intro-pixel{
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(.5rem,2vw,.85rem);
+  color:var(--plasma);
+  text-shadow:0 0 20px var(--plasma);
+  letter-spacing:.05em;margin-bottom:1.5rem;
+  animation:intro-glow 2s ease-in-out infinite;
+}
+@keyframes intro-glow{0%,100%{text-shadow:0 0 20px var(--plasma)}50%{text-shadow:0 0 40px var(--plasma),0 0 80px var(--plasma)}}
+.intro-name{
+  font-family:'Press Start 2P',monospace;
+  font-size:clamp(1rem,5vw,2.2rem);
+  color:white;margin-bottom:.8rem;line-height:1.5;
+}
+.intro-name span{color:var(--teal);}
+.intro-role{
+  font-family:'Space Mono',monospace;
+  font-size:clamp(.5rem,1.5vw,.75rem);
+  color:rgba(255,255,255,.4);letter-spacing:.25em;
+  text-transform:uppercase;margin-bottom:3rem;
+}
+.intro-start{
+  font-family:'Press Start 2P',monospace;font-size:.65rem;
+  color:var(--gold);letter-spacing:.15em;
+  animation:blink-prompt 1s infinite;cursor:pointer;
+  padding:.8rem 2rem;border:1px solid rgba(251,191,36,.3);
+  background:rgba(251,191,36,.05);
+  transition:background .3s;
+}
+.intro-start:hover{background:rgba(251,191,36,.15);}
+.intro-pixel-art{
+  font-size:2.5rem;margin-bottom:2rem;
+  animation:float-art 3s ease-in-out infinite;
+}
+@keyframes float-art{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}
+
+/* ── LOADING BAR ── */
+#loading{
+  position:fixed;inset:0;z-index:9500;background:var(--ink);
+  display:flex;flex-direction:column;align-items:center;justify-content:center;gap:1.5rem;
+}
+#loading.done{opacity:0;pointer-events:none;transition:opacity .5s;}
+.load-text{font-family:'Press Start 2P',monospace;font-size:.6rem;color:var(--plasma);letter-spacing:.1em;}
+.load-bar{width:200px;height:4px;background:rgba(255,255,255,.08);}
+.load-fill{height:100%;background:linear-gradient(90deg,var(--plasma),var(--teal));
+  width:0;transition:width .3s;}
+
+/* scrollbar */
+html::-webkit-scrollbar{display:none;}
+</style>
 </head>
 <body>
-    <!-- Background Decoration -->
-    <div class="bg-decoration">
-        <div class="circle" style="width: 100px; height: 100px; background: var(--secondary); top: 10%; left: 5%; animation-delay: 0s;"></div>
-        <div class="circle" style="width: 60px; height: 60px; background: var(--primary); top: 20%; right: 10%; animation-delay: 2s;"></div>
-        <div class="circle" style="width: 80px; height: 80px; background: var(--accent); bottom: 15%; left: 15%; animation-delay: 4s;"></div>
-        <div class="circle" style="width: 50px; height: 50px; background: var(--secondary); bottom: 30%; right: 20%; animation-delay: 6s;"></div>
-        <div class="circle" style="width: 70px; height: 70px; background: var(--mint); top: 50%; left: 50%; animation-delay: 3s;"></div>
+
+<!-- LOADING -->
+<div id="loading">
+  <div class="load-text">INITIALIZING WORLD...</div>
+  <div class="load-bar"><div class="load-fill" id="load-fill"></div></div>
+</div>
+
+<!-- INTRO SCREEN -->
+<div id="intro" style="opacity:0;pointer-events:none;">
+  <div class="intro-pixel-art">🌍</div>
+  <div class="intro-pixel">✦ WELCOME TO THE WORLD OF ✦</div>
+  <div class="intro-name">ANVITA<br><span>PANJUGULA</span></div>
+  <div class="intro-role">AI Engineer &nbsp;·&nbsp; GenAI Architect &nbsp;·&nbsp; Cincinnati OH</div>
+  <div class="intro-start" id="start-btn">▶ &nbsp;PRESS START</div>
+</div>
+
+<!-- CUSTOM CURSOR -->
+<div id="cur"></div>
+<div id="cur-ring"></div>
+
+<!-- HUD TOP -->
+<div id="hud-top">
+  <div id="hud-name">ANVITA.WORLD</div>
+  <div id="hud-coords">POS: <span id="pos-x">0</span>, <span id="pos-z">0</span></div>
+</div>
+
+<!-- MINIMAP -->
+<div id="minimap">
+  <canvas id="minimap-canvas" width="110" height="110"></canvas>
+  <div class="minimap-label">MAP</div>
+</div>
+
+<!-- ISLAND LABEL -->
+<div id="island-label">
+  <div class="zone-tag" id="zone-tag"></div>
+  <div class="zone-name" id="zone-name"></div>
+  <div class="zone-hint" id="zone-hint"></div>
+</div>
+
+<!-- ENTER PROMPT -->
+<div id="enter-prompt">[ E ] EXPLORE</div>
+
+<!-- CONTROLS HINT -->
+<div id="controls-hint">
+  <div class="ctrl-key">
+    <div class="key-box" id="key-w">W</div>
+    <div style="font-size:.4rem;color:rgba(255,255,255,.3);font-family:'Space Mono',monospace;">FWD</div>
+  </div>
+  <div>
+    <div class="key-row">
+      <div class="key-box" id="key-a">A</div>
+      <div class="key-box" id="key-s">S</div>
+      <div class="key-box" id="key-d">D</div>
     </div>
+    <div style="font-size:.4rem;color:rgba(255,255,255,.3);text-align:center;margin-top:.3rem;font-family:'Space Mono',monospace;">MOVE</div>
+  </div>
+  <div class="ctrl-key">
+    <div class="key-box" id="key-e" style="width:40px;font-size:.5rem;">E</div>
+    <div style="font-size:.4rem;color:rgba(255,255,255,.3);font-family:'Space Mono',monospace;">INFO</div>
+  </div>
+</div>
 
-    <!-- Navigation -->
-    <nav id="navbar">
-        <div class="nav-container">
-            <div class="nav-brand">ANVITA PANJUGULA</div>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+<!-- PANEL -->
+<div id="panel">
+  <div id="panel-close" onclick="closePanel()">✕</div>
+  <div id="panel-zone"></div>
+  <div id="panel-title"></div>
+  <div id="panel-body"></div>
+</div>
+
+<!-- THREE.JS CANVAS -->
+<canvas id="c"></canvas>
+
+<script type="module">
+import * as THREE from 'three';
+
+/* ════════════════════════════════════
+   WORLD DATA
+════════════════════════════════════ */
+const ISLANDS = [
+  {
+    id:'home', pos:[0,0,0], color:0xc084fc, roofColor:0x9333ea,
+    zone:'HOME BASE', name:'ANVITA\nPANJUGULA', hint:'AI Engineer & GenAI Architect',
+    size:3.2, height:1.2,
+    content:{
+      zone:'HOME BASE',
+      title:'ANVITA PANJUGULA',
+      body:`<div class="entry">
+        <div class="e-sub">AI Engineer · GenAI Architect · Cincinnati, OH</div>
+        <p>Building production GenAI systems that <strong>actually ship</strong>. Specialised in multiagent LLM orchestration, RAG pipelines, async Python, and Azure OpenAI.</p>
+        <p style="margin-top:.8rem">Graduate student at <strong>University of Cincinnati</strong>, M.Eng. Computer Science (April 2026).</p>
+        <div class="tag-row">
+          <span class="tag">Python</span><span class="tag">LangGraph</span><span class="tag">FastAPI</span><span class="tag">React</span><span class="tag">Azure OpenAI</span>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="home">
-        <div class="hero-pattern" id="heroPattern"></div>
-        <div class="hero-content">
-            <h1>ANVITA<br>PANJUGULA</h1>
-            <p class="hero-subtitle">AI Engineer & GenAI Systems Architect</p>
-            <div class="scroll-arrow" onclick="document.getElementById('about').scrollIntoView({behavior: 'smooth'})">
-                ↓
-            </div>
+      </div>`
+    }
+  },
+  {
+    id:'pg', pos:[18,0,-8], color:0x2dd4bf, roofColor:0x0d9488,
+    zone:'ZONE 01 · WORK', name:'PROCTER &\nGAMBLE', hint:'Digital Accelerator · Aug 2024→Now',
+    size:2.8, height:1.0,
+    content:{
+      zone:'ZONE 01 · EXPERIENCE',
+      title:'PROCTER & GAMBLE',
+      body:`<div class="entry">
+        <div class="e-title">SWE Intern / AI Researcher</div>
+        <div class="e-sub">Digital Accelerator</div>
+        <div class="e-date">AUG 2024 → PRESENT</div>
+        <ul>
+          <li>Architected <strong>StatVisor</strong> — LangGraph multi-agent AI with Azure OpenAI GPT-4</li>
+          <li>RAG pipeline over <strong>3,000+ pages</strong> using FAISS, sub-second latency</li>
+          <li>MCP server integrating SAS Viya APIs for real-time statistical tooling</li>
+          <li>Async FastAPI backends, Azure AD, JWT/Bearer tokens, SSL/TLS</li>
+        </ul>
+        <div class="tag-row">
+          <span class="tag" style="color:var(--teal);border-color:rgba(45,212,191,.4);">↑ 70% faster consultations</span>
         </div>
-    </section>
-
-    <!-- About Section -->
-    <section id="about">
-        <div class="section-container">
-            <h2 class="section-title">About</h2>
-            <div class="about-grid">
-                <div class="about-card">
-                    <h3>🎓 Education</h3>
-                    <div>
-                        <p><strong>University of Cincinnati</strong></p>
-                        <p style="color: #666; font-style: italic;">Aug 2024 – Dec 2025</p>
-                        <p>Masters of Engineering in Computer Science</p>
-                        <br>
-                        <p><strong>Mahindra University</strong></p>
-                        <p style="color: #666; font-style: italic;">Aug 2020 – Jun 2024</p>
-                        <p>Bachelors in Computer Science</p>
-                    </div>
-                </div>
-                <div class="about-card">
-                    <h3>💡 Profile</h3>
-                    <p>
-                        AI-driven Software Engineer with hands-on experience building GenAI systems and scalable backends. 
-                        Skilled in multiagent LLM orchestration, RAG pipelines, async Python, and Azure OpenAI. 
-                        Known for delivering high-impact, enterprise-ready solutions efficiently.
-                    </p>
-                </div>
-            </div>
+      </div>`
+    }
+  },
+  {
+    id:'aq', pos:[-16,0,-10], color:0xf97316, roofColor:0xc2410c,
+    zone:'ZONE 01 · WORK', name:'ANALYTICS\nQUAD4', hint:'Internship · Jan–Jun 2024',
+    size:2.2, height:0.9,
+    content:{
+      zone:'ZONE 01 · EXPERIENCE',
+      title:'ANALYTICSQUAD4',
+      body:`<div class="entry">
+        <div class="e-title">Software Engineering Intern</div>
+        <div class="e-date">JAN 2024 → JUN 2024</div>
+        <ul>
+          <li>Scraped <strong>11K+ websites</strong> using Selenium & BeautifulSoup4</li>
+          <li>APIs computing similar items with similarity scores in <strong>&lt;3s</strong></li>
+          <li>Designed load arrangement algorithms & optimization</li>
+        </ul>
+        <div class="tag-row"><span class="tag">Selenium</span><span class="tag">BeautifulSoup</span><span class="tag">APIs</span><span class="tag">Python</span></div>
+      </div>`
+    }
+  },
+  {
+    id:'mockview', pos:[12,0,14], color:0xfbbf24, roofColor:0xd97706,
+    zone:'ZONE 02 · PROJECTS', name:'MOCKVIEW', hint:'Live Product — Click to visit',
+    size:2.6, height:1.1,
+    content:{
+      zone:'ZONE 02 · PROJECTS',
+      title:'MOCKVIEW',
+      body:`<div class="entry">
+        <div class="e-sub">AI Mock Interview Platform — LIVE</div>
+        <p>Full-stack AI interview coach. Speak your answers, <strong>Gemini AI</strong> gives real-time feedback. Browser-native speech recognition, deployed on Vercel.</p>
+        <div class="tag-row">
+          <span class="tag">React</span><span class="tag">FastAPI</span><span class="tag">Gemini AI</span><span class="tag">Supabase</span><span class="tag">Vercel</span>
         </div>
-    </section>
+        <a class="live-btn" href="https://mockview-ruby.vercel.app" target="_blank">🚀 LAUNCH APP ↗</a>
+      </div>`
+    }
+  },
+  {
+    id:'neurocache', pos:[-14,0,12], color:0x4ade80, roofColor:0x16a34a,
+    zone:'ZONE 02 · PROJECTS', name:'NEUROCACHE', hint:'LLM Memory Engine',
+    size:2.0, height:0.8,
+    content:{
+      zone:'ZONE 02 · PROJECTS',
+      title:'NEUROCACHE',
+      body:`<div class="entry">
+        <div class="e-sub">LLM Memory Optimization Engine</div>
+        <p>Memory management layer optimising long-context LLM reasoning via <strong>context compression</strong> and semantic prioritisation.</p>
+        <div class="tag-row"><span class="tag">Async Python</span><span class="tag">LLM Systems</span><span class="tag">Optimization</span></div>
+      </div>`
+    }
+  },
+  {
+    id:'skills', pos:[0,0,20], color:0x818cf8, roofColor:0x4f46e5,
+    zone:'ZONE 03 · SKILLS', name:'SKILL\nTOWER', hint:'Technical Arsenal',
+    size:2.4, height:1.8,
+    content:{
+      zone:'ZONE 03 · SKILLS',
+      title:'TECHNICAL ARSENAL',
+      body:`<div class="entry">
+        <div class="e-title">LLMs & GenAI</div>
+        <div class="tag-row"><span class="tag">LangGraph</span><span class="tag">LangChain</span><span class="tag">RAG</span><span class="tag">FAISS</span><span class="tag">GPT-4</span><span class="tag">Gemini</span><span class="tag">MCP</span><span class="tag">Prompt Eng.</span></div>
+      </div>
+      <div class="entry">
+        <div class="e-title">Backend</div>
+        <div class="tag-row"><span class="tag">Python</span><span class="tag">FastAPI</span><span class="tag">Async</span><span class="tag">REST</span><span class="tag">Flask</span><span class="tag">Pydantic</span></div>
+      </div>
+      <div class="entry">
+        <div class="e-title">Frontend</div>
+        <div class="tag-row"><span class="tag">React</span><span class="tag">TypeScript</span><span class="tag">Tailwind</span><span class="tag">Streamlit</span></div>
+      </div>
+      <div class="entry">
+        <div class="e-title">Cloud & MLOps</div>
+        <div class="tag-row"><span class="tag">Azure</span><span class="tag">AWS</span><span class="tag">Docker</span><span class="tag">Kubernetes</span><span class="tag">MLflow</span><span class="tag">CI/CD</span></div>
+      </div>
+      <div class="entry" style="border-bottom:none">
+        <div class="e-title">ML / DL</div>
+        <div class="tag-row"><span class="tag">TensorFlow</span><span class="tag">PyTorch</span><span class="tag">Scikit-learn</span><span class="tag">Hugging Face</span><span class="tag">OpenCV</span></div>
+      </div>`
+    }
+  },
+  {
+    id:'certs', pos:[-20,0,0], color:0xf43f5e, roofColor:0xbe123c,
+    zone:'ZONE 04 · CREDS', name:'CERT\nVAULT', hint:'6 Professional Certifications',
+    size:2.1, height:0.9,
+    content:{
+      zone:'ZONE 04 · CREDENTIALS',
+      title:'CERTIFICATIONS',
+      body:`
+      <div class="entry"><div class="e-title">🤖 Anthropic</div><p>Prompt Engineering Professional</p></div>
+      <div class="entry"><div class="e-title">☁️ Amazon Web Services</div><p>Certified AI Practitioner</p></div>
+      <div class="entry"><div class="e-title">⚡ NVIDIA</div><p>Agentic AI LLMs Professional</p></div>
+      <div class="entry"><div class="e-title">🔷 Databricks</div><p>Generative AI Engineer Associate</p></div>
+      <div class="entry"><div class="e-title">🔵 IBM</div><p>RAG & Agentic AI Professional</p></div>
+      <div class="entry" style="border-bottom:none"><div class="e-title">❄️ Snowflake</div><p>Generative AI Professional</p></div>`
+    }
+  },
+  {
+    id:'contact', pos:[22,0,6], color:0xe879f9, roofColor:0xa21caf,
+    zone:'ZONE 05 · CONNECT', name:'CONTACT\nPORTAL', hint:'Open to opportunities',
+    size:2.3, height:1.0,
+    content:{
+      zone:'ZONE 05 · CONTACT',
+      title:'OPEN TO CONNECT',
+      body:`<div class="entry">
+        <p style="margin-bottom:1rem">Open to <strong>full-time AI/ML roles</strong>, GenAI engineering positions, and collaborations.</p>
+        <div class="e-title" style="margin-bottom:.4rem">📧 Email</div>
+        <p><a href="mailto:panjugulaanvita@gmail.com" style="color:var(--teal)">panjugulaanvita@gmail.com</a></p>
+      </div>
+      <div class="entry">
+        <div class="e-title" style="margin-bottom:.4rem">💼 LinkedIn</div>
+        <p><a href="https://linkedin.com/in/anvitaxreddy" target="_blank" style="color:var(--teal)">linkedin.com/in/anvitaxreddy</a></p>
+      </div>
+      <div class="entry">
+        <div class="e-title" style="margin-bottom:.4rem">💻 GitHub</div>
+        <p><a href="https://github.com/anvitaxreddy" target="_blank" style="color:var(--teal)">github.com/anvitaxreddy</a></p>
+      </div>
+      <div class="entry" style="border-bottom:none">
+        <div class="e-title" style="margin-bottom:.4rem">📍 Location</div>
+        <p>Cincinnati, OH · Open to relocation</p>
+      </div>`
+    }
+  },
+];
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <div class="section-container">
-            <h2 class="section-title">Experience</h2>
-            <div class="experience-grid">
-                <div class="exp-card">
-                    <h3>SWE Intern / AI Researcher</h3>
-                    <div class="exp-company">Procter & Gamble – Digital Accelerator</div>
-                    <div class="exp-date">Aug 2024 - Present</div>
-                    <ul>
-                        <li>Architected StatVisor, an AI-powered statistical advisor using LangGraph multi-agent orchestration integrated with Azure OpenAI (GPT-4)</li>
-                        <li>Built a RAG pipeline with FAISS, text embeddings, and semantic search over 3000+ pages with sub-second latency</li>
-                        <li>Implemented Model Context Protocol (MCP) server integrating SAS Viya APIs</li>
-                        <li>Developed scalable async Python backends using FastAPI and asyncio</li>
-                        <li>Built full-stack Streamlit interface with custom CSS/JS and inline PDF.js previews</li>
-                        <li>Integrated enterprise security: Azure AD auth, JWT/Bearer tokens, SSL/TLS</li>
-                        <li>Reduced consultation turnaround by 70% via AI-driven workflows</li>
-                    </ul>
-                </div>
+/* ════════════════════════════════════
+   SCENE SETUP
+════════════════════════════════════ */
+const canvas = document.getElementById('c');
+const renderer = new THREE.WebGLRenderer({canvas, antialias:true, alpha:true});
+renderer.setPixelRatio(Math.min(devicePixelRatio,2));
+renderer.shadowMap.enabled = true;
+renderer.shadowMap.type = THREE.PCFSoftShadowMap;
+renderer.toneMapping = THREE.ACESFilmicToneMapping;
+renderer.toneMappingExposure = 1.1;
 
-                <div class="exp-card">
-                    <h3>Software Engineering Intern</h3>
-                    <div class="exp-company">AnalyticsQuad4</div>
-                    <div class="exp-date">Jan 2024 – Jun 2024</div>
-                    <ul>
-                        <li>Optimized load arrangements with Python algorithms, reducing manual sorting</li>
-                        <li>Scraped 11K+ websites using Selenium and BeautifulSoup4</li>
-                        <li>Integrated APIs to compute top similar items with similarity scores in 3 sec</li>
-                        <li>Designed algorithms for complex arrangement planning & optimization</li>
-                    </ul>
-                </div>
+const scene = new THREE.Scene();
+scene.fog = new THREE.FogExp2(0x0a0a1a, 0.018);
+scene.background = new THREE.Color(0x0a0a1a);
 
-                <div class="exp-card">
-                    <h3>Software Engineering Intern</h3>
-                    <div class="exp-company">Wissen Info Tech Pvt. Ltd</div>
-                    <div class="exp-date">Jun 2022 – Aug 2022</div>
-                    <ul>
-                        <li>Assisted as Full Stack Developer with Python & PostgreSQL</li>
-                        <li>Handled data processing and integration</li>
-                        <li>Collaborated on web designs using HTML, CSS, and JavaScript</li>
-                    </ul>
-                </div>
-            </div>
-        </div>
-    </section>
+// Isometric camera
+const aspect = innerWidth/innerHeight;
+const frustum = 22;
+const camera = new THREE.OrthographicCamera(
+  -frustum*aspect, frustum*aspect,
+  frustum, -frustum,
+  0.1, 200
+);
+// Classic isometric angle
+camera.position.set(30,30,30);
+camera.lookAt(0,0,0);
 
-    <!-- Projects Section -->
-    <section id="projects">
-        <div class="section-container">
-            <h2 class="section-title">Projects</h2>
-            <div class="projects-grid">
-                <div class="project-card">
-                    <h3>🧠 NeuroCache</h3>
-                    <div class="project-subtitle">LLM Memory & Reasoning Optimization Engine</div>
-                    <ul>
-                        <li>Designed LLM memory management layer to optimize long-context reasoning</li>
-                        <li>Implemented context compression and semantic prioritization</li>
-                        <li>Built async execution engine in Python to benchmark latency and memory overhead</li>
-                        <li>Developed metrics to compare reasoning quality and cost-performance trade-offs</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span class="project-tag">LLM Systems</span>
-                        <span class="project-tag">Async Python</span>
-                        <span class="project-tag">Optimization</span>
-                    </div>
-                </div>
+function resize(){
+  const w=innerWidth,h=innerHeight;
+  renderer.setSize(w,h);
+  const a=w/h;
+  camera.left=-frustum*a; camera.right=frustum*a;
+  camera.top=frustum; camera.bottom=-frustum;
+  camera.updateProjectionMatrix();
+}
+resize();
+window.addEventListener('resize',resize);
 
-                <div class="project-card">
-                    <h3>🎬 Movie Semantic Search</h3>
-                    <div class="project-subtitle">Computer Vision</div>
-                    <ul>
-                        <li>Developed system to identify and segment frames in movies</li>
-                        <li>Implemented face detection algorithms for semantic scene search</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span class="project-tag">OpenCV</span>
-                        <span class="project-tag">Computer Vision</span>
-                    </div>
-                </div>
+/* ════════════════════════════════════
+   LIGHTING
+════════════════════════════════════ */
+const ambient = new THREE.AmbientLight(0x1a1040,1.2);
+scene.add(ambient);
 
-                <div class="project-card">
-                    <h3>📊 Time Series Data Modelling</h3>
-                    <div class="project-subtitle">Meteorological Data Analysis</div>
-                    <ul>
-                        <li>Created meta model using exponential smoothing and ARIMA</li>
-                        <li>Analyzed historical meteorological data to produce accurate forecasts</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span class="project-tag">R Studio</span>
-                        <span class="project-tag">ARIMA</span>
-                        <span class="project-tag">Time Series</span>
-                    </div>
-                </div>
+const sun = new THREE.DirectionalLight(0xffe4b5,2.2);
+sun.position.set(20,30,10);
+sun.castShadow = true;
+sun.shadow.mapSize.set(2048,2048);
+sun.shadow.camera.near = 0.5;
+sun.shadow.camera.far = 120;
+sun.shadow.camera.left = -50;
+sun.shadow.camera.right = 50;
+sun.shadow.camera.top = 50;
+sun.shadow.camera.bottom = -50;
+scene.add(sun);
 
-                <div class="project-card">
-                    <h3>📉 Customer Churn Prediction</h3>
-                    <div class="project-subtitle">Machine Learning</div>
-                    <ul>
-                        <li>Built logistic regression model using Telco Customer Churn dataset</li>
-                        <li>Performed feature engineering, model training, and evaluation</li>
-                    </ul>
-                    <div class="project-tags">
-                        <span class="project-tag">Logistic Regression</span>
-                        <span class="project-tag">Feature Engineering</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+const fill = new THREE.DirectionalLight(0x4060a0,0.6);
+fill.position.set(-10,10,-10);
+scene.add(fill);
 
-    <!-- Skills Section -->
-    <section id="skills">
-        <div class="section-container">
-            <h2 class="section-title">Skills</h2>
-            <div class="skills-container">
-                <div class="skill-category">
-                    <h3>💻 Programming Languages</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Python</span>
-                        <span class="skill-tag">Java</span>
-                        <span class="skill-tag">C++</span>
-                        <span class="skill-tag">C</span>
-                        <span class="skill-tag">R</span>
-                        <span class="skill-tag">SQL</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">GoLang</span>
-                    </div>
-                </div>
+/* ════════════════════════════════════
+   STARFIELD
+════════════════════════════════════ */
+{
+  const geo = new THREE.BufferGeometry();
+  const n = 800;
+  const pos = new Float32Array(n*3);
+  const col = new Float32Array(n*3);
+  for(let i=0;i<n;i++){
+    pos[i*3]=(Math.random()-.5)*200;
+    pos[i*3+1]=30+Math.random()*40;
+    pos[i*3+2]=(Math.random()-.5)*200;
+    const c=new THREE.Color().setHSL(Math.random()*.7+.6,0.8,0.7+Math.random()*.3);
+    col[i*3]=c.r;col[i*3+1]=c.g;col[i*3+2]=c.b;
+  }
+  geo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  geo.setAttribute('color',new THREE.BufferAttribute(col,3));
+  const mat = new THREE.PointsMaterial({size:.35,vertexColors:true,transparent:true,opacity:.9});
+  scene.add(new THREE.Points(geo,mat));
+}
 
-                <div class="skill-category">
-                    <h3>🤖 Machine Learning & Deep Learning</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Deep Learning</span>
-                        <span class="skill-tag">Neural Networks</span>
-                        <span class="skill-tag">CNNs</span>
-                        <span class="skill-tag">RNNs</span>
-                        <span class="skill-tag">LSTMs</span>
-                        <span class="skill-tag">Transformers</span>
-                        <span class="skill-tag">Transfer Learning</span>
-                        <span class="skill-tag">Supervised Learning</span>
-                        <span class="skill-tag">Unsupervised Learning</span>
-                        <span class="skill-tag">Reinforcement Learning</span>
-                    </div>
-                </div>
+/* ════════════════════════════════════
+   GROUND GRID
+════════════════════════════════════ */
+{
+  const grid = new THREE.GridHelper(100,40,0x1a1040,0x0f0f30);
+  grid.position.y=-0.02;
+  grid.material.transparent=true;
+  grid.material.opacity=0.4;
+  scene.add(grid);
+}
 
-                <div class="skill-category">
-                    <h3>🧠 Large Language Models & GenAI</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">GPT-4</span>
-                        <span class="skill-tag">Azure OpenAI</span>
-                        <span class="skill-tag">LangChain</span>
-                        <span class="skill-tag">LangGraph</span>
-                        <span class="skill-tag">Multi-Agent Systems</span>
-                        <span class="skill-tag">Prompt Engineering</span>
-                        <span class="skill-tag">RAG Pipelines</span>
-                        <span class="skill-tag">Fine-tuning</span>
-                        <span class="skill-tag">Model Context Protocol</span>
-                        <span class="skill-tag">Chain-of-Thought</span>
-                    </div>
-                </div>
+/* ════════════════════════════════════
+   BUILD ISLANDS
+════════════════════════════════════ */
+const islandMeshes = [];
+const floatData = [];
 
-                <div class="skill-category">
-                    <h3>👁️ Computer Vision</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">OpenCV</span>
-                        <span class="skill-tag">Image Classification</span>
-                        <span class="skill-tag">Object Detection</span>
-                        <span class="skill-tag">Image Segmentation</span>
-                        <span class="skill-tag">Face Recognition</span>
-                        <span class="skill-tag">YOLO</span>
-                        <span class="skill-tag">ResNet</span>
-                        <span class="skill-tag">Feature Extraction</span>
-                    </div>
-                </div>
+function buildIsland(isl){
+  const group = new THREE.Group();
+  const [px,,pz] = isl.pos;
 
-                <div class="skill-category">
-                    <h3>💬 NLP & Text Processing</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Natural Language Processing</span>
-                        <span class="skill-tag">Text Classification</span>
-                        <span class="skill-tag">Named Entity Recognition</span>
-                        <span class="skill-tag">Sentiment Analysis</span>
-                        <span class="skill-tag">Text Embeddings</span>
-                        <span class="skill-tag">Semantic Search</span>
-                        <span class="skill-tag">Topic Modeling</span>
-                        <span class="skill-tag">Tokenization</span>
-                    </div>
-                </div>
+  // ── Platform
+  const pGeo = new THREE.BoxGeometry(isl.size*2, isl.height, isl.size*2);
+  const pMat = new THREE.MeshLambertMaterial({color:isl.color});
+  const platform = new THREE.Mesh(pGeo, pMat);
+  platform.castShadow=true; platform.receiveShadow=true;
+  platform.position.y = isl.height/2;
+  group.add(platform);
 
-                <div class="skill-category">
-                    <h3>📊 Statistical Analysis & ML</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Statistical Modeling</span>
-                        <span class="skill-tag">Time Series Analysis</span>
-                        <span class="skill-tag">ARIMA</span>
-                        <span class="skill-tag">Regression Analysis</span>
-                        <span class="skill-tag">Classification</span>
-                        <span class="skill-tag">Clustering</span>
-                        <span class="skill-tag">Dimensionality Reduction</span>
-                        <span class="skill-tag">A/B Testing</span>
-                        <span class="skill-tag">Hypothesis Testing</span>
-                    </div>
-                </div>
+  // ── Underside gradient strips
+  for(let i=0;i<3;i++){
+    const sg = new THREE.BoxGeometry(isl.size*2-i*.3,0.08,isl.size*2-i*.3);
+    const sm = new THREE.MeshBasicMaterial({color:new THREE.Color(isl.color).multiplyScalar(.4+i*.1),transparent:true,opacity:.6});
+    const strip = new THREE.Mesh(sg,sm);
+    strip.position.y = -i*.2;
+    group.add(strip);
+  }
 
-                <div class="skill-category">
-                    <h3>🔧 ML/AI Frameworks & Libraries</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">TensorFlow</span>
-                        <span class="skill-tag">PyTorch</span>
-                        <span class="skill-tag">Keras</span>
-                        <span class="skill-tag">Scikit-learn</span>
-                        <span class="skill-tag">Hugging Face</span>
-                        <span class="skill-tag">XGBoost</span>
-                        <span class="skill-tag">LightGBM</span>
-                        <span class="skill-tag">NumPy</span>
-                        <span class="skill-tag">SciPy</span>
-                        <span class="skill-tag">Pandas</span>
-                    </div>
-                </div>
+  // ── Building on top (simple pixelated tower)
+  const bW = isl.size*.6, bH = isl.size*.9;
+  const bGeo = new THREE.BoxGeometry(bW,bH,bW);
+  const bMat = new THREE.MeshLambertMaterial({color:isl.roofColor});
+  const building = new THREE.Mesh(bGeo,bMat);
+  building.castShadow=true;
+  building.position.y = isl.height + bH/2;
+  group.add(building);
 
-                <div class="skill-category">
-                    <h3>🗄️ Data Engineering & Vector DBs</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">FAISS</span>
-                        <span class="skill-tag">Pinecone</span>
-                        <span class="skill-tag">Chroma</span>
-                        <span class="skill-tag">Vector Embeddings</span>
-                        <span class="skill-tag">ETL Pipelines</span>
-                        <span class="skill-tag">Data Preprocessing</span>
-                        <span class="skill-tag">Feature Engineering</span>
-                        <span class="skill-tag">Apache Spark</span>
-                        <span class="skill-tag">Data Warehousing</span>
-                    </div>
-                </div>
+  // Windows (small cubes on building)
+  const winMat = new THREE.MeshBasicMaterial({color:0xfefce8});
+  const winPositions = [[-bW*.25,bH*.1],[bW*.25,bH*.1],[-bW*.25,-bH*.2],[bW*.25,-bH*.2]];
+  winPositions.forEach(([wx,wy])=>{
+    const wg=new THREE.BoxGeometry(.12,.12,.05);
+    const w=new THREE.Mesh(wg,winMat);
+    w.position.set(wx,isl.height+bH/2+wy,bW/2+.03);
+    group.add(w);
+    const wb=new THREE.Mesh(wg,winMat);
+    wb.position.set(wx,isl.height+bH/2+wy,-bW/2-.03);
+    group.add(wb);
+  });
 
-                <div class="skill-category">
-                    <h3>💾 Databases</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">PostgreSQL</span>
-                        <span class="skill-tag">MySQL</span>
-                        <span class="skill-tag">MongoDB</span>
-                        <span class="skill-tag">Redis</span>
-                        <span class="skill-tag">SQLite</span>
-                        <span class="skill-tag">NoSQL</span>
-                        <span class="skill-tag">Vector Databases</span>
-                    </div>
-                </div>
+  // ── Roof pyramid / hat
+  const rGeo = new THREE.ConeGeometry(bW*.75,bH*.5,4);
+  const rMat = new THREE.MeshLambertMaterial({color:new THREE.Color(isl.roofColor).multiplyScalar(1.3).getHex()});
+  const roof = new THREE.Mesh(rGeo,rMat);
+  roof.castShadow=true;
+  roof.position.y = isl.height + bH + bH*.25;
+  roof.rotation.y = Math.PI/4;
+  group.add(roof);
 
-                <div class="skill-category">
-                    <h3>⚙️ Backend & APIs</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">FastAPI</span>
-                        <span class="skill-tag">Flask</span>
-                        <span class="skill-tag">Django</span>
-                        <span class="skill-tag">REST APIs</span>
-                        <span class="skill-tag">GraphQL</span>
-                        <span class="skill-tag">Async/Await</span>
-                        <span class="skill-tag">Asyncio</span>
-                        <span class="skill-tag">Microservices</span>
-                        <span class="skill-tag">Pydantic</span>
-                    </div>
-                </div>
+  // ── Glow sphere under platform
+  const glowGeo = new THREE.SphereGeometry(isl.size*.8,16,8);
+  const glowMat = new THREE.MeshBasicMaterial({
+    color:isl.color,transparent:true,opacity:.08,
+    side:THREE.BackSide
+  });
+  const glow = new THREE.Mesh(glowGeo,glowMat);
+  glow.position.y = -0.5;
+  group.add(glow);
 
-                <div class="skill-category">
-                    <h3>🎨 Frontend Development</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Streamlit</span>
-                        <span class="skill-tag">React</span>
-                        <span class="skill-tag">HTML5</span>
-                        <span class="skill-tag">CSS3</span>
-                        <span class="skill-tag">JavaScript</span>
-                        <span class="skill-tag">TypeScript</span>
-                        <span class="skill-tag">Tailwind CSS</span>
-                        <span class="skill-tag">Bootstrap</span>
-                    </div>
-                </div>
+  // ── Point light on top
+  const ptLight = new THREE.PointLight(isl.color,1.5,8);
+  ptLight.position.y = isl.height + bH + bH*.5 + 1;
+  group.add(ptLight);
 
-                <div class="skill-category">
-                    <h3>☁️ Cloud Platforms & Services</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Azure</span>
-                        <span class="skill-tag">Azure OpenAI</span>
-                        <span class="skill-tag">AWS</span>
-                        <span class="skill-tag">GCP</span>
-                        <span class="skill-tag">Azure ML</span>
-                        <span class="skill-tag">SageMaker</span>
-                        <span class="skill-tag">Azure Functions</span>
-                        <span class="skill-tag">Lambda</span>
-                    </div>
-                </div>
+  // ── Little trees/decorations around platform
+  if(isl.id!=='skills'){
+    for(let i=0;i<3;i++){
+      const angle = (i/3)*Math.PI*2 + Math.random()*.5;
+      const r = isl.size*.8;
+      const tGeo = new THREE.ConeGeometry(.18,.5,6);
+      const tMat = new THREE.MeshLambertMaterial({color:0x4ade80});
+      const tree = new THREE.Mesh(tGeo,tMat);
+      tree.position.set(Math.cos(angle)*r, isl.height+.25, Math.sin(angle)*r);
+      group.add(tree);
+      const trunkG = new THREE.CylinderGeometry(.04,.05,.2,6);
+      const trunkM = new THREE.MeshLambertMaterial({color:0x854d0e});
+      const trunk = new THREE.Mesh(trunkG,trunkM);
+      trunk.position.set(Math.cos(angle)*r, isl.height+.1, Math.sin(angle)*r);
+      group.add(trunk);
+    }
+  }
 
-                <div class="skill-category">
-                    <h3>🔐 Security & Authentication</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Azure AD</span>
-                        <span class="skill-tag">OAuth 2.0</span>
-                        <span class="skill-tag">JWT</span>
-                        <span class="skill-tag">Bearer Tokens</span>
-                        <span class="skill-tag">SSL/TLS</span>
-                        <span class="skill-tag">API Security</span>
-                        <span class="skill-tag">RBAC</span>
-                    </div>
-                </div>
+  group.position.set(px, 0, pz);
+  scene.add(group);
 
-                <div class="skill-category">
-                    <h3>🔨 MLOps & DevOps</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Docker</span>
-                        <span class="skill-tag">Kubernetes</span>
-                        <span class="skill-tag">CI/CD</span>
-                        <span class="skill-tag">Git/GitHub</span>
-                        <span class="skill-tag">MLflow</span>
-                        <span class="skill-tag">Model Deployment</span>
-                        <span class="skill-tag">Model Monitoring</span>
-                        <span class="skill-tag">Jenkins</span>
-                        <span class="skill-tag">Linux/Unix</span>
-                    </div>
-                </div>
+  // store for float animation
+  floatData.push({group, baseY:0, phase:Math.random()*Math.PI*2, speed:.4+Math.random()*.3});
 
-                <div class="skill-category">
-                    <h3>📈 Model Development & Optimization</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Hyperparameter Tuning</span>
-                        <span class="skill-tag">Model Evaluation</span>
-                        <span class="skill-tag">Cross-Validation</span>
-                        <span class="skill-tag">Model Compression</span>
-                        <span class="skill-tag">Quantization</span>
-                        <span class="skill-tag">Pruning</span>
-                        <span class="skill-tag">Performance Optimization</span>
-                        <span class="skill-tag">Experiment Tracking</span>
-                    </div>
-                </div>
+  // invisible click hitbox
+  const hitGeo = new THREE.BoxGeometry(isl.size*2+1, isl.height+bH+bH*.5+2, isl.size*2+1);
+  const hitMat = new THREE.MeshBasicMaterial({visible:false});
+  const hit = new THREE.Mesh(hitGeo, hitMat);
+  hit.position.set(px, (isl.height+bH)/2, pz);
+  hit.userData = {island:isl};
+  scene.add(hit);
+  islandMeshes.push(hit);
 
-                <div class="skill-category">
-                    <h3>🔍 Data Analysis & Visualization</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Exploratory Data Analysis</span>
-                        <span class="skill-tag">Matplotlib</span>
-                        <span class="skill-tag">Seaborn</span>
-                        <span class="skill-tag">Plotly</span>
-                        <span class="skill-tag">Tableau</span>
-                        <span class="skill-tag">Power BI</span>
-                        <span class="skill-tag">Data Storytelling</span>
-                    </div>
-                </div>
+  return group;
+}
 
-                <div class="skill-category">
-                    <h3>🛠️ Tools & Technologies</h3>
-                    <div class="skill-tags">
-                        <span class="skill-tag">Jupyter Notebooks</span>
-                        <span class="skill-tag">VS Code</span>
-                        <span class="skill-tag">PyCharm</span>
-                        <span class="skill-tag">Postman</span>
-                        <span class="skill-tag">Selenium</span>
-                        <span class="skill-tag">BeautifulSoup</span>
-                        <span class="skill-tag">Web Scraping</span>
-                        <span class="skill-tag">API Integration</span>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </section>
+ISLANDS.forEach(buildIsland);
 
-    <!-- Contact Section -->
-    <section id="contact">
-        <div class="section-container">
-            <h2 class="section-title">Contact</h2>
-            <div class="contact-grid">
-                <div class="contact-card">
-                    <div class="contact-icon">📧</div>
-                    <h3>Email</h3>
-                    <a href="/cdn-cgi/l/email-protection#b1c1d0dfdbc4d6d0d0f1dcd0d8dd9fc4d29fd4d5c4"><span class="__cf_email__" data-cfemail="e69687888c93818787a68b878f8ac89385c8838293">[email&#160;protected]</span></a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">📱</div>
-                    <h3>Phone</h3>
-                    <a href="tel:+15135108295">(513) 510-8295</a>
-                </div>
-                <div class="contact-card">
-                    <div class="contact-icon">💼</div>
-                    <h3>LinkedIn</h3>
-                    <a href="https://www.linkedin.com/in/panjugulaanvita" target="_blank">linkedin.com/in/panjugulaanvita</a>
-                </div>
-                <div class="contact-card" style="background: var(--dark);">
-                    <div class="contact-icon">💻</div>
-                    <h3>GitHub</h3>
-                    <a href="https://github.com/anvitaxreddy" target="_blank">github.com/anvitaxreddy</a>
-                </div>
-            </div>
-        </div>
-    </section>
+/* ════════════════════════════════════
+   FLOATING PARTICLES between islands
+════════════════════════════════════ */
+{
+  const pGeo=new THREE.BufferGeometry();
+  const n=120;
+  const pos=new Float32Array(n*3);
+  for(let i=0;i<n;i++){
+    pos[i*3]=(Math.random()-.5)*60;
+    pos[i*3+1]=1+Math.random()*4;
+    pos[i*3+2]=(Math.random()-.5)*60;
+  }
+  pGeo.setAttribute('position',new THREE.BufferAttribute(pos,3));
+  const pMat=new THREE.PointsMaterial({color:0xc084fc,size:.18,transparent:true,opacity:.6});
+  const particles=new THREE.Points(pGeo,pMat);
+  scene.add(particles);
+  // animate
+  window._particles=particles;
+}
 
-    <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
-        // Create dotted pattern in hero
-        const heroPattern = document.getElementById('heroPattern');
-        for (let i = 0; i < 200; i++) {
-            const dot = document.createElement('div');
-            dot.className = 'pattern-dot';
-            dot.style.left = Math.random() * 100 + '%';
-            dot.style.top = Math.random() * 100 + '%';
-            heroPattern.appendChild(dot);
-        }
+/* ════════════════════════════════════
+   PATHS between islands (dotted lines)
+════════════════════════════════════ */
+{
+  const connections=[[0,1],[0,2],[0,3],[0,4],[0,5],[0,6],[0,7]];
+  connections.forEach(([a,b])=>{
+    const p1=new THREE.Vector3(...ISLANDS[a].pos);
+    const p2=new THREE.Vector3(...ISLANDS[b].pos);
+    const pts=[];
+    const steps=20;
+    for(let i=0;i<=steps;i++){
+      const t=i/steps;
+      const p=p1.clone().lerp(p2,t);
+      p.y=0.1+Math.sin(t*Math.PI)*.5;
+      pts.push(p);
+    }
+    const curve=new THREE.CatmullRomCurve3(pts);
+    const geo=new THREE.BufferGeometry().setFromPoints(curve.getPoints(40));
+    const mat=new THREE.LineBasicMaterial({color:0x3b1d8a,transparent:true,opacity:.5});
+    scene.add(new THREE.Line(geo,mat));
+  });
+}
 
-        // Smooth scroll for navigation
-        document.querySelectorAll('nav a').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
+/* ════════════════════════════════════
+   PLAYER AVATAR (capsule-like shape)
+════════════════════════════════════ */
+const player = new THREE.Group();
+{
+  // body
+  const bodyG=new THREE.CylinderGeometry(.2,.25,.6,8);
+  const bodyM=new THREE.MeshLambertMaterial({color:0x7c3aed});
+  player.add(new THREE.Mesh(bodyG,bodyM));
+  // head
+  const headG=new THREE.SphereGeometry(.22,8,8);
+  const headM=new THREE.MeshLambertMaterial({color:0xfde68a});
+  const head=new THREE.Mesh(headG,headM);
+  head.position.y=.55;
+  player.add(head);
+  // hat
+  const hatG=new THREE.CylinderGeometry(.05,.22,.18,8);
+  const hatM=new THREE.MeshLambertMaterial({color:0xc084fc});
+  const hat=new THREE.Mesh(hatG,hatM);
+  hat.position.y=.75;
+  player.add(hat);
+}
+player.position.set(0,0.3,0);
+scene.add(player);
+
+/* ════════════════════════════════════
+   PLAYER MOVEMENT
+════════════════════════════════════ */
+const keys={};
+const keyMap={'KeyW':'w','KeyS':'s','KeyA':'a','KeyD':'d','KeyE':'e',
+              'ArrowUp':'w','ArrowDown':'s','ArrowLeft':'a','ArrowRight':'d'};
+window.addEventListener('keydown',e=>{
+  const k=keyMap[e.code];
+  if(k){keys[k]=true; updateKeyHUD();}
+  if(k==='e') handleInteract();
+});
+window.addEventListener('keyup',e=>{
+  const k=keyMap[e.code];
+  if(k){keys[k]=false; updateKeyHUD();}
+});
+
+function updateKeyHUD(){
+  document.getElementById('key-w').classList.toggle('pressed',!!keys['w']);
+  document.getElementById('key-s').classList.toggle('pressed',!!keys['s']);
+  document.getElementById('key-a').classList.toggle('pressed',!!keys['a']);
+  document.getElementById('key-d').classList.toggle('pressed',!!keys['d']);
+  document.getElementById('key-e').classList.toggle('pressed',!!keys['e']);
+}
+
+const playerSpeed = 0.1;
+const camOffset = new THREE.Vector3(30,30,30);
+let nearIsland = null;
+let panelOpen = false;
+
+/* ════════════════════════════════════
+   MINIMAP
+════════════════════════════════════ */
+const mmCanvas = document.getElementById('minimap-canvas');
+const mmCtx = mmCanvas.getContext('2d');
+const MM_SIZE = 110;
+const MM_WORLD = 55; // world units per minimap half
+
+function drawMinimap(){
+  mmCtx.clearRect(0,0,MM_SIZE,MM_SIZE);
+  mmCtx.fillStyle='rgba(10,10,26,.0)';
+  mmCtx.fillRect(0,0,MM_SIZE,MM_SIZE);
+
+  const cx=MM_SIZE/2, cy=MM_SIZE/2;
+  const scale=MM_SIZE/(MM_WORLD*2);
+
+  ISLANDS.forEach(isl=>{
+    const mx=cx+isl.pos[0]*scale;
+    const my=cy+isl.pos[2]*scale;
+    mmCtx.beginPath();
+    mmCtx.arc(mx,my,4,0,Math.PI*2);
+    const c=new THREE.Color(isl.color);
+    mmCtx.fillStyle=`rgb(${Math.round(c.r*255)},${Math.round(c.g*255)},${Math.round(c.b*255)})`;
+    mmCtx.fill();
+  });
+
+  // player dot
+  const px=cx+player.position.x*scale;
+  const pz=cy+player.position.z*scale;
+  mmCtx.beginPath();
+  mmCtx.arc(px,pz,3,0,Math.PI*2);
+  mmCtx.fillStyle='#fbbf24';
+  mmCtx.fill();
+  // player dot glow
+  mmCtx.beginPath();
+  mmCtx.arc(px,pz,5,0,Math.PI*2);
+  mmCtx.fillStyle='rgba(251,191,36,.3)';
+  mmCtx.fill();
+}
+
+/* ════════════════════════════════════
+   ISLAND PROXIMITY & LABEL
+════════════════════════════════════ */
+function checkProximity(){
+  nearIsland=null;
+  let minDist=Infinity;
+  ISLANDS.forEach(isl=>{
+    const dx=player.position.x-isl.pos[0];
+    const dz=player.position.z-isl.pos[2];
+    const dist=Math.sqrt(dx*dx+dz*dz);
+    if(dist<isl.size*2.2 && dist<minDist){
+      minDist=dist;nearIsland=isl;
+    }
+  });
+
+  const label=document.getElementById('island-label');
+  const enterPrompt=document.getElementById('enter-prompt');
+
+  if(nearIsland){
+    document.getElementById('zone-tag').textContent=nearIsland.zone;
+    document.getElementById('zone-name').textContent=nearIsland.name;
+    document.getElementById('zone-hint').textContent=nearIsland.hint;
+    label.style.opacity='1';
+    if(!panelOpen) enterPrompt.style.opacity='1';
+  } else {
+    label.style.opacity='0';
+    enterPrompt.style.opacity='0';
+  }
+}
+
+function handleInteract(){
+  if(nearIsland && !panelOpen){
+    openPanel(nearIsland);
+  }
+}
+
+function openPanel(isl){
+  panelOpen=true;
+  const p=document.getElementById('panel');
+  document.getElementById('panel-zone').textContent=isl.content.zone;
+  document.getElementById('panel-title').textContent=isl.content.title;
+  document.getElementById('panel-body').innerHTML=isl.content.body;
+  p.classList.add('show');
+  document.getElementById('enter-prompt').style.opacity='0';
+}
+window.closePanel=function(){
+  panelOpen=false;
+  document.getElementById('panel').classList.remove('show');
+};
+
+/* ════════════════════════════════════
+   RAYCASTER (click on islands)
+════════════════════════════════════ */
+const raycaster=new THREE.Raycaster();
+const mouse=new THREE.Vector2();
+window.addEventListener('click',e=>{
+  if(panelOpen)return;
+  mouse.x=(e.clientX/innerWidth)*2-1;
+  mouse.y=-(e.clientY/innerHeight)*2+1;
+  raycaster.setFromCamera(mouse,camera);
+  const hits=raycaster.intersectObjects(islandMeshes);
+  if(hits.length>0){
+    const isl=hits[0].object.userData.island;
+    openPanel(isl);
+  }
+});
+
+/* ════════════════════════════════════
+   CURSOR
+════════════════════════════════════ */
+const cur=document.getElementById('cur');
+const curRing=document.getElementById('cur-ring');
+let mx=0,my=0,rx=0,ry=0;
+window.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;});
+(function tickCursor(){
+  cur.style.left=mx+'px'; cur.style.top=my+'px';
+  rx+=(mx-rx)*.13; ry+=(my-ry)*.13;
+  curRing.style.left=rx+'px'; curRing.style.top=ry+'px';
+  requestAnimationFrame(tickCursor);
+})();
+
+/* ════════════════════════════════════
+   ANIMATION LOOP
+════════════════════════════════════ */
+let t=0;
+let playerBobPhase=0;
+let stepPhase=0;
+
+function animate(){
+  requestAnimationFrame(animate);
+  t+=0.016;
+
+  // ── Player movement
+  const moved={x:0,z:0};
+  // isometric directions (camera at 45°, so move diagonals)
+  if(keys['w']){moved.x-=playerSpeed;moved.z-=playerSpeed;}
+  if(keys['s']){moved.x+=playerSpeed;moved.z+=playerSpeed;}
+  if(keys['a']){moved.x-=playerSpeed;moved.z+=playerSpeed;}
+  if(keys['d']){moved.x+=playerSpeed;moved.z-=playerSpeed;}
+
+  const isMoving=(moved.x!==0||moved.z!==0);
+  if(isMoving){
+    player.position.x+=moved.x;
+    player.position.z+=moved.z;
+    // clamp to world
+    player.position.x=Math.max(-40,Math.min(40,player.position.x));
+    player.position.z=Math.max(-40,Math.min(40,player.position.z));
+    // Bob while walking
+    playerBobPhase+=0.2;
+    player.position.y=0.3+Math.sin(playerBobPhase)*0.07;
+    // Face direction
+    if(moved.x||moved.z) player.rotation.y=Math.atan2(moved.x,moved.z);
+    // Step animation - swing legs (rotate group slightly)
+    stepPhase+=0.15;
+    player.rotation.z=Math.sin(stepPhase)*0.08;
+  } else {
+    player.position.y=0.3+Math.sin(t*1.2)*0.04;
+    player.rotation.z*=0.9;
+  }
+
+  // ── Camera follow (smooth)
+  const targetCam=new THREE.Vector3(
+    player.position.x+camOffset.x,
+    camOffset.y,
+    player.position.z+camOffset.z
+  );
+  camera.position.lerp(targetCam,0.07);
+  camera.lookAt(player.position);
+
+  // ── Island float
+  floatData.forEach(fd=>{
+    fd.group.position.y=fd.baseY+Math.sin(t*fd.speed+fd.phase)*0.25;
+  });
+
+  // ── Particle drift
+  if(window._particles){
+    const pos=window._particles.geometry.attributes.position.array;
+    for(let i=0;i<pos.length;i+=3){
+      pos[i+1]+=0.008;
+      if(pos[i+1]>6) pos[i+1]=0.5;
+    }
+    window._particles.geometry.attributes.position.needsUpdate=true;
+    window._particles.rotation.y+=0.0003;
+  }
+
+  // ── HUD coords
+  document.getElementById('pos-x').textContent=Math.round(player.position.x);
+  document.getElementById('pos-z').textContent=Math.round(player.position.z);
+
+  // ── Proximity check
+  checkProximity();
+
+  // ── Minimap
+  drawMinimap();
+
+  renderer.render(scene,camera);
+}
+
+/* ════════════════════════════════════
+   LOADING SEQUENCE
+════════════════════════════════════ */
+const loadFill=document.getElementById('load-fill');
+let prog=0;
+const loadInt=setInterval(()=>{
+  prog+=Math.random()*15;
+  if(prog>100){prog=100;clearInterval(loadInt);}
+  loadFill.style.width=prog+'%';
+  if(prog>=100){
+    setTimeout(()=>{
+      document.getElementById('loading').classList.add('done');
+      const intro=document.getElementById('intro');
+      intro.style.opacity='1';
+      intro.style.pointerEvents='all';
+    },400);
+  }
+},80);
+
+document.getElementById('start-btn').addEventListener('click',()=>{
+  const intro=document.getElementById('intro');
+  intro.classList.add('fade');
+  setTimeout(()=>intro.remove(),1000);
+  animate();
+});
+
+// also allow ENTER key to start
+window.addEventListener('keydown',e=>{
+  if(e.code==='Enter'){
+    const btn=document.getElementById('start-btn');
+    if(btn) btn.click();
+  }
+},{once:true});
+
+</script>
+</body>
+</html>
